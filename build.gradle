@@ -25,6 +25,7 @@ task deleteLocalRepo(type: Delete) {
 
 task runFullItegrationTest {
     dependsOn 'deleteLocalRepo'
+    dependsOn ':localise-plugin:test'
     dependsOn ':localise-plugin:uploadArchives'
     dependsOn ':sample:clean'
     dependsOn ':sample:downloadLocaliseTranslations'

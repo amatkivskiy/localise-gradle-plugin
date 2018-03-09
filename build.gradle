@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url uri('./localRepo') }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.github.amatkivskiy:localise:0.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+}
+
+task deleteLocalRepo(type: Delete) {
+    delete 'localRepo/*.*'
+}
+
+task runFullItegrationTest {
+    dependsOn 'deleteLocalRepo'
+    dependsOn ':localise-plugin:uploadArchives'
+    dependsOn ':sample:clean'
+    dependsOn ':sample:downloadLocaliseTranslations'
+}

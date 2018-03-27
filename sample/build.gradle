@@ -23,7 +23,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'localise'
 
 localise {
-    localiseKey "key"
+    localiseKey "$System.env.LOCALISE_PROJECT_KEY"
 }
 
 android {

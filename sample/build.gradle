@@ -1,8 +1,29 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url uri('../localRepo') }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.github.amatkivskiy:localise:0.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'localise'
 
 localise {
-    localiseKey "key"
+    localiseKey "$System.env.LOCALISE_PROJECT_KEY"
 }
 
 android {

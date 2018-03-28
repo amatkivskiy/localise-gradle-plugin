@@ -3,10 +3,10 @@
  Loco xml export: Android string resources
  Project: Localise Gradle plugin 
  Release: Working copy
- Locale: en-GB, English (UK)
+ Locale: uk-UA, Ukrainian (Ukraine)
  Exported by: Andriy Matkivskyy
  Exported at: Tue, 13 Mar 2018 12:06:22 +0000
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">App Name</string>
+    <string name="app_name">Назва апи</string>
 </resources>

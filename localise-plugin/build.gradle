@@ -1,3 +1,9 @@
+repositories {
+    google()
+    mavenCentral()
+    jcenter()
+}
+
 group 'com.github.amatkivskiy'
 version '0.1'
 
@@ -12,7 +18,7 @@ dependencies {
     compile localGroovy()
 
     testCompile gradleTestKit()
-    testCompile (group: 'org.spockframework', name: 'spock-core', version: '1.0-groovy-2.4') {
+    testCompile(group: 'org.spockframework', name: 'spock-core', version: '1.0-groovy-2.4') {
         exclude group: 'org.codehaus.groovy', module: 'groovy-all'
     }
 
@@ -24,4 +30,9 @@ uploadArchives {
         pom.artifactId = 'localise'
         repository(url: uri('../localRepo'))
     }
+}
+
+task deleteLocalRepo(type: Delete) {
+    delete '../localRepo/*.*'
+    outputs.upToDateWhen { false }
 }

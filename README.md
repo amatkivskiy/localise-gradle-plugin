@@ -1,15 +1,12 @@
 # Localise.biz gradle plugin for Android projects
 [![CircleCI](https://circleci.com/gh/amatkivskiy/localise-gradle-plugin.svg?style=svg)](https://circleci.com/gh/amatkivskiy/localise-gradle-plugin)
 [![Gitter](https://badges.gitter.im/amatkivskiy/localise-gradle-plugin.svg)](https://gitter.im/amatkivskiy/localise-gradle-plugin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[ ![Download](https://api.bintray.com/packages/amatkivskiy/maven/localise/images/download.svg) ](https://bintray.com/amatkivskiy/maven/localise/_latestVersion)
 
 This is a gradle plugin for Android projects that fetches localisation `strings.xml` from localise.biz web service and places it under `res/` folder. :boom: Multiple translations are also supported.
 
 ## Download
 
-`TODO`
-
-## Usage 
-In `app/build.gradle`
 ```
 buildscript {
     repositories {
@@ -21,6 +18,11 @@ buildscript {
     }
 }
 
+```
+
+## Usage 
+In `app/build.gradle`
+```
 apply plugin: 'com.android.application'
 // make sure this line comes *after* you apply the Android plugin
 apply plugin: 'localise'

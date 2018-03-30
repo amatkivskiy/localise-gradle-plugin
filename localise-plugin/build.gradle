@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.novoda:bintray-release:0.8.1"
+    }
+}
+
 repositories {
     google()
     mavenCentral()
@@ -10,8 +19,19 @@ version '0.1'
 apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'com.novoda.bintray-release'
 
-sourceCompatibility = 1.8
+publish {
+    groupId = 'com.github.amatkivskiy'
+    artifactId = 'localise'
+    publishVersion = version
+    desc = 'This is a gradle plugin for Android projects that fetches localization strings.xml localise.biz web service.'
+    licences = ['MIT']
+    website = 'https://github.com/amatkivskiy/localise-gradle-plugin'
+    autoPublish = false
+    bintrayUser = 'amatkivskiy'
+    userOrg = 'amatkivskiy'
+}
 
 dependencies {
     compile gradleApi()
@@ -30,6 +50,22 @@ uploadArchives {
         pom.artifactId = 'localise'
         repository(url: uri('../localRepo'))
     }
+}
+
+// custom tasks for creating source/javadoc jars
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+// add javadoc/source jar tasks as artifacts
+artifacts {
+    archives sourcesJar, javadocJar
 }
 
 task deleteLocalRepo(type: Delete) {
